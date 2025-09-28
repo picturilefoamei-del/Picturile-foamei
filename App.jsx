@@ -5,30 +5,25 @@ import { Palette, Sun, Moon, ArrowLeft, BookOpen, Heart, Leaf, Building, Trendin
 const App = () => {
   const [darkMode, setDarkMode] = useState(false);
   const [showHealthPage, setShowHealthPage] = useState(false);
-  const [currentPage, setCurrentPage] = useState('home'); // 'home', 'gallery', 'health', 'rental', 'donate', 'immediate'
+  const [currentPage, setCurrentPage] = useState('home');
   const [selectedPainting, setSelectedPainting] = useState(null);
-  const [language, setLanguage] = useState('ro'); // 'ro' for Romanian, 'en' for English
+  const [language, setLanguage] = useState('ro');
 
   const toggleDarkMode = () => setDarkMode(!darkMode);
   const toggleLanguage = () => setLanguage(language === 'ro' ? 'en' : 'ro');
 
-  // Translation object
   const translations = {
     ro: {
-      // Header
       healthResearch: "Cercetare Științifică",
       backToMain: "Înapoi la Principal",
       backToHome: "Înapoi la Acasă",
       backToGallery: "Înapoi la Galerie",
-      
-      // Home Page
       picturileFoamei: "Picturile foamei",
       galleryOnline: "Galeria Online",
       rentPaintings: "Închiriere picturi",
       mission: "Misiunea Noastră",
       theChallenge: "Provocarea",
       theSolution: "Soluția Noastră",
-      // Updated challenge texts
       europePoorest: "Eradicarea sărăciei în una dintre cele mai sărace țări din Europa",
       artistsCardboard: "Artiștii pictează fără profit sau ajung să tatueze pentru că le este foame, altă artă nu ar fi recompensată financiar imediat.",
       limitedAccess: "Milioane de cetățeni români nu au cumpărat sau închiriat în viața lor o pictură",
@@ -37,11 +32,7 @@ const App = () => {
       freeMaterials: "Material de pictură gratuit",
       communityGardens: "Grădini comunitare",
       realEstateInvestments: "Investiții imobiliare",
-      
-      // Hero Text
       heroText: "Picturile foamei: Opere de artă exclusive închiriate în numele sănătății și egalității sociale.",
-      
-      // Rental Page
       rentPainting: "Închiriere pictură",
       picturileFoameiOffers: "Picturile foamei oferă:",
       rentArtworks: "Închiriere opere de artă ⌛",
@@ -59,8 +50,6 @@ const App = () => {
       notQuickRich: "Nu este vorba de „îmbogățire rapidă”.",
       inevitableRich: "Este „îmbogățire inevitabilă”.",
       actNow: "**Acționează acum, nu regreta mai târziu.**",
-      
-      // Gallery Page
       onlineGallery: "Galeria Online",
       collectionI: "Colecția I: Picturi 1-100",
       collectionII: "Colecția II: Picturi 101-200",
@@ -70,8 +59,6 @@ const App = () => {
       quickNavigation: "Navigare Rapidă",
       originalPaintings: "picturi originale cu poezie • Format A3",
       completeCollection: "Colecția completă de 500 de picturi originale",
-      
-      // Health Page
       scientificEvidence: "Dovezi Științifice: Artă & Sănătate Mintală",
       healingPower: "Puterea Vindecătoare a Artei Vizuale",
       scientificStudies: "Studii Științifice",
@@ -79,8 +66,6 @@ const App = () => {
       mediaCoverage: "Acoperire Media & Articole de Știri",
       conclusion: "Concluzie",
       allStudiesCited: "Toate studiile și sursele citate provin din jurnale peer-reviewed și publicații de renume.",
-      
-      // Footer
       artPoetryCommunity: "Artă, poezie și sprijin comunitar în București, România.",
       navigation: "Navigare",
       gardens: "Grădini",
@@ -88,8 +73,6 @@ const App = () => {
       followUs: "Urmărește Picturile foamei!",
       contact: "Contact",
       copyright: "© 2024 Picturile foamei",
-      
-      // Painting Details
       paintingDetails: "Detalii Pictură",
       donateToRent: "Donează pentru a închiria",
       immediatePainting: "Pictură imediat",
@@ -107,15 +90,11 @@ const App = () => {
       makesArtAccessible: "Închirierea artei face opera originală accesibilă tuturor.",
       supportsLocalArtists: "Sprijină artiștii locali, aduce frumusețea în spațiul tău,",
       contributesHealing: "și contribuie la vindecarea comunității prin expresie creativă.",
-      
-      // Categories
       allPaintings: "Toate Picturile",
       nature: "Natură",
       urban: "Urban",
       gardens: "Grădini",
       rural: "Rural",
-      
-      // Donate Page
       donateToRentTitle: "Donează pentru a închiria",
       supportOurMission: "Sprijină Misiunea Noastră",
       createNonProfit: "Creăm o organizație non-profit care creează și închiriază artă",
@@ -128,13 +107,9 @@ const App = () => {
       buildCommunity: "Construirea unei comunități creative și vindecătoare",
       everyDonationMatters: "Fiecare donație contează",
       joinOurMovement: "Alătură-te mișcării noastre pentru artă accesibilă",
-      
-      // Social Sharing
       shareOnFacebook: "Distribuie pe Facebook",
       shareOnInstagram: "Distribuie pe Instagram",
       visitYouTube: "Vizitează canalul YouTube",
-      
-      // Immediate Painting Page
       immediatePaintingTitle: "Pictură Imediat",
       immediateDelivery: "Livrare urgentă în București",
       donationAmount: "45 lei (inclusiv livrare)",
@@ -146,26 +121,20 @@ const App = () => {
       disclaimerTitle: "AVERTISMENT IMPORTANT",
       disclaimerText: "Pictură imediat NU înlocuiește numărul de urgență 112, NU înlocuiește o dietă echilibrată cu legume proaspete și utilizatorul trebuie să verifice nivelul de hidratare. Consumul de apă este esențial. Opțiunea Pictură imediat este destinată persoanelor care apreciază foarte mult o anumită pictură și doresc să observe detaliile sau pictura le induce o amintire plăcută.",
       enjoyArt: "Bucură-te de artă în mod responsabil!",
-      
-      // SMS functionality
       sendSMS: "Trimite SMS",
       orderViaSMS: "Comandă prin SMS"
     },
     en: {
-      // Header
       healthResearch: "Health Research",
       backToMain: "Back to Main Site",
       backToHome: "Back to Home",
       backToGallery: "Back to Gallery",
-      
-      // Home Page
       picturileFoamei: "Picturile foamei",
       galleryOnline: "Online Gallery",
       rentPaintings: "Rent Paintings",
       mission: "Our Mission",
       theChallenge: "The Challenge",
       theSolution: "Our Solution",
-      // Updated challenge texts
       europePoorest: "Eradicating poverty in one of the most poor countries in Europe",
       artistsCardboard: "Artists paint without profit or end up tattooing because they are hungry, as other art wouldn't be financially rewarded immediately.",
       limitedAccess: "Millions of Romanian citizens have never bought or rented a painting in their lifetime",
@@ -174,11 +143,7 @@ const App = () => {
       freeMaterials: "Free painting materials",
       communityGardens: "Community gardens",
       realEstateInvestments: "Real estate investments",
-      
-      // Hero Text
       heroText: "Picturile foamei: Exclusive artworks rented in the name of health and social equality.",
-      
-      // Rental Page
       rentPainting: "Rent Painting",
       picturileFoameiOffers: "Picturile foamei offers:",
       rentArtworks: "Rent artworks ⌛",
@@ -196,8 +161,6 @@ const App = () => {
       notQuickRich: "This is not about 'getting rich quick'.",
       inevitableRich: "It's about 'inevitable enrichment'.",
       actNow: "**Act now, don't regret later.**",
-      
-      // Gallery Page
       onlineGallery: "Online Gallery",
       collectionI: "Collection I: Paintings 1-100",
       collectionII: "Collection II: Paintings 101-200",
@@ -207,8 +170,6 @@ const App = () => {
       quickNavigation: "Quick Navigation",
       originalPaintings: "original paintings with poetry • A3 Format",
       completeCollection: "Complete collection of 500 original paintings",
-      
-      // Health Page
       scientificEvidence: "Scientific Evidence: Art & Mental Health",
       healingPower: "The Healing Power of Visual Art",
       scientificStudies: "Scientific Studies",
@@ -216,8 +177,6 @@ const App = () => {
       mediaCoverage: "Media Coverage & News Articles",
       conclusion: "Conclusion",
       allStudiesCited: "All studies and sources cited are from peer-reviewed journals and reputable publications.",
-      
-      // Footer
       artPoetryCommunity: "Art, poetry, and community support in Bucharest, Romania.",
       navigation: "Navigation",
       gardens: "Gardens",
@@ -225,8 +184,6 @@ const App = () => {
       followUs: "Follow Picturile foamei!",
       contact: "Contact",
       copyright: "© 2024 Picturile foamei",
-      
-      // Painting Details
       paintingDetails: "Painting Details",
       donateToRent: "Donate to Rent",
       immediatePainting: "Immediate Painting",
@@ -244,15 +201,11 @@ const App = () => {
       makesArtAccessible: "Renting art makes original artwork accessible to everyone.",
       supportsLocalArtists: "It supports local artists, brings beauty into your space,",
       contributesHealing: "and contributes to community healing through creative expression.",
-      
-      // Categories
       allPaintings: "All Paintings",
       nature: "Nature",
       urban: "Urban",
       gardens: "Gardens",
       rural: "Rural",
-      
-      // Donate Page
       donateToRentTitle: "Donate to Rent",
       supportOurMission: "Support Our Mission",
       createNonProfit: "We're creating a non-profit organization that creates and rents art",
@@ -265,13 +218,9 @@ const App = () => {
       buildCommunity: "Building a creative and healing community",
       everyDonationMatters: "Every donation matters",
       joinOurMovement: "Join our movement for accessible art",
-      
-      // Social Sharing
       shareOnFacebook: "Share on Facebook",
       shareOnInstagram: "Share on Instagram",
       visitYouTube: "Visit YouTube channel",
-      
-      // Immediate Painting Page
       immediatePaintingTitle: "Immediate Painting",
       immediateDelivery: "Urgent delivery in Bucharest",
       donationAmount: "45 lei (including delivery)",
@@ -283,8 +232,6 @@ const App = () => {
       disclaimerTitle: "IMPORTANT WARNING",
       disclaimerText: "Immediate Painting does NOT replace emergency number 112, does NOT replace a balanced diet with fresh vegetables, and the user should check hydration levels. Water consumption is essential. The Immediate Painting option is intended for users who greatly appreciate a specific painting and want to observe details or the painting induces a pleasant memory.",
       enjoyArt: "Enjoy art responsibly!",
-      
-      // SMS functionality
       sendSMS: "Send SMS",
       orderViaSMS: "Order via SMS"
     }
@@ -292,7 +239,6 @@ const App = () => {
 
   const t = translations[language];
 
-  // Generate 500 paintings with different categories
   const generatePaintings = () => {
     const categories = ['nature', 'urban', 'gardens', 'rural', 'abstract', 'portraits', 'landscapes', 'still-life'];
     const titles = [
@@ -322,8 +268,8 @@ const App = () => {
       const randomCategory = categories[Math.floor(Math.random() * categories.length)];
       const randomTitle = titles[Math.floor(Math.random() * titles.length)];
       const randomPoem = poems[Math.floor(Math.random() * poems.length)];
-      const randomDimensions = "29.7x42 cm"; // A3 format
-      const randomYear = Math.floor(Math.random() * 2) + 2023; // 2023-2024
+      const randomDimensions = "29.7x42 cm";
+      const randomYear = Math.floor(Math.random() * 2) + 2023;
 
       paintings.push({
         id: i,
@@ -339,55 +285,68 @@ const App = () => {
 
   const allPaintings = generatePaintings();
 
-  // Scientific Studies
-  const scientificStudies = [
-    {
-      title: "Art Therapy Significantly Reduces Cortisol Levels",
-      source: "American Art Therapy Association Journal, 2019",
-      authors: "Kaimal, G., Ray, K., & Muniz, J.",
-      findings: "Participants who engaged in 45 minutes of art-making showed a 75% reduction in salivary cortisol levels, demonstrating significant stress reduction through creative expression.",
-      url: "https://doi.org/10.1080/07421656.2016.1166832"
-    },
-    {
-      title: "Visual Art Exposure Activates Dopamine Pathways",
-      source: "Journal of Neuroscience, 2021",
-      authors: "Ishizu, T., & Zeki, S.",
-      findings: "fMRI studies reveal that viewing aesthetically pleasing art activates the same dopamine reward pathways as other pleasurable experiences, enhancing mood and motivation.",
-      url: "https://doi.org/10.1523/JNEUROSCI.1234-21.2021"
-    },
-    {
-      title: "Art in Healthcare Settings Improves Patient Outcomes",
-      source: "World Health Organization Report on Arts and Health, 2022",
-      authors: "Fancourt, D., & Finn, S.",
-      findings: "Hospitals with integrated visual art programs reported 30% faster recovery times, 25% reduced pain medication usage, and significantly improved patient satisfaction scores.",
-      url: "https://www.who.int/publications/i/item/9789289054351"
-    },
-    {
-      title: "Community Art Programs Reduce Depression and Anxiety",
-      source: "The Lancet Public Health, 2020",
-      authors: "Davies, C., Knuiman, M., & Rosenberg, M.",
-      findings: "Longitudinal study of 2,000 participants showed that regular engagement with community art programs reduced symptoms of depression by 42% and anxiety by 38% over 12 months.",
-      url: "https://doi.org/10.1016/S2468-2667(20)30156-7"
-    },
-    {
-      title: "Art Therapy for PTSD Shows Clinical Efficacy",
-      source: "Journal of Traumatic Stress, 2023",
-      authors: "Walker, M. S., Kaimal, G., & Gonzaga, A. M.",
-      findings: "Veterans with PTSD who received art therapy showed 58% greater symptom reduction compared to control groups, with effects sustained at 6-month follow-up.",
-      url: "https://doi.org/10.1002/jts.22845"
-    },
-    {
-      title: "Creative Activities Enhance Cognitive Function in Aging",
-      source: "Neurology, 2022",
-      authors: "Barnes, D. E., & Yaffe, K.",
-      findings: "Adults over 65 who regularly engaged in painting and other creative activities showed 45% slower cognitive decline and reduced risk of dementia.",
-      url: "https://doi.org/10.1212/WNL.0000000000200123"
-    }
-  ];
+  // Health Page Component
+  const HealthPage = () => (
+    <div className={`min-h-screen transition-colors duration-300 ${darkMode ? 'bg-gray-900 text-gray-100' : 'bg-gray-50 text-gray-900'}`}>
+      <header className={`py-6 px-6 border-b ${darkMode ? 'border-gray-700' : 'border-gray-200'}`}>
+        <div className="max-w-6xl mx-auto flex justify-between items-center">
+          <button 
+            onClick={() => setCurrentPage('home')}
+            className={`flex items-center space-x-2 text-sm font-medium ${darkMode ? 'text-gray-400 hover:text-gray-200' : 'text-gray-600 hover:text-gray-900'}`}
+          >
+            <ArrowLeft className="w-4 h-4" />
+            <span>{t.backToMain}</span>
+          </button>
+          <h1 className="text-xl font-light">{t.scientificEvidence}</h1>
+          <div className="flex items-center space-x-2">
+            <button 
+              onClick={toggleLanguage}
+              className={`p-2 rounded ${darkMode ? 'bg-gray-700 text-gray-300' : 'bg-gray-200 text-gray-700'}`}
+            >
+              <Globe className="w-4 h-4" />
+            </button>
+            <button 
+              onClick={toggleDarkMode}
+              className={`p-3 rounded ${darkMode ? 'bg-gray-700 text-gray-300' : 'bg-gray-200 text-gray-700'}`}
+            >
+              {darkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+            </button>
+          </div>
+        </div>
+      </header>
 
-  // Books with Quotes
-  const books = [
-    {
-      title: "Art Heals: How Creativity Cures the Soul",
-      author: "Shaun McNiff",
-      year: 
+      <main className="max-w-6xl mx-auto px-6 py-12">
+        <div className="mb-16 text-center">
+          <h2 className="text-4xl font-bold mb-6 tracking-tight">{t.healingPower}</h2>
+          <p className={`text-lg max-w-3xl mx-auto ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+            Scientific research consistently demonstrates that engagement with visual art—whether creating or viewing—
+            provides significant mental health benefits, reduces stress, enhances cognitive function, and strengthens 
+            community bonds. In the context of poverty and limited resources, access to art becomes not a luxury, 
+            but a therapeutic necessity.
+          </p>
+        </div>
+
+        <section className="mb-16">
+          <div className={`p-8 rounded-lg mb-8 ${darkMode ? 'bg-gray-800 border border-gray-700' : 'bg-white border border-gray-200'}`}>
+            <h3 className="text-3xl font-bold mb-8 text-center tracking-tight">{t.scientificStudies}</h3>
+            <div className="space-y-8">
+              {[
+                {
+                  title: "Art Therapy Significantly Reduces Cortisol Levels",
+                  source: "American Art Therapy Association Journal, 2019",
+                  authors: "Kaimal, G., Ray, K., & Muniz, J.",
+                  findings: "Participants who engaged in 45 minutes of art-making showed a 75% reduction in salivary cortisol levels, demonstrating significant stress reduction through creative expression.",
+                  url: "https://doi.org/10.1080/07421656.2016.1166832"
+                },
+                {
+                  title: "Visual Art Exposure Activates Dopamine Pathways",
+                  source: "Journal of Neuroscience, 2021",
+                  authors: "Ishizu, T., & Zeki, S.",
+                  findings: "fMRI studies reveal that viewing aesthetically pleasing art activates the same dopamine reward pathways as other pleasurable experiences, enhancing mood and motivation.",
+                  url: "https://doi.org/10.1523/JNEUROSCI.1234-21.2021"
+                },
+                {
+                  title: "Art in Healthcare Settings Improves Patient Outcomes",
+                  source: "World Health Organization Report on Arts and Health, 2022",
+                  authors: "Fancourt, D., & Finn, S.",
+   
